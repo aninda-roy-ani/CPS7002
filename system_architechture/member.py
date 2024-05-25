@@ -1,54 +1,58 @@
+
 class Member:
-    def __init__(self, member_id, name, membership_type, personal_details, health_info):
-        self._member_id = member_id
-        self._name = name
-        self._membership_type = membership_type
-        self._personal_details = personal_details
-        self._health_info = health_info
-        self._appointments = []
-        self._attendance_records = []
+    def __init__(self, member_id, name, age, height, weight, plan):
+        self.__id = member_id
+        self.__name = name
+        self.__age = age
+        self.__height = height
+        self.__weight = weight
+        self.__plan = plan
+        self.__appointments = []
 
-    def get_member_id(self):
-        return self._member_id
+    def get_id(self):
+        return self.__id
 
-    def set_member_id(self, member_id):
-        self._member_id = member_id
+    def set_id(self, member_id):
+        self.__id = member_id
 
     def get_name(self):
-        return self._name
+        return self.__name
 
     def set_name(self, name):
-        self._name = name
+        self.__name = name
 
-    def get_membership_type(self):
-        return self._membership_type
+    def get_age(self):
+        return self.__age
 
-    def set_membership_type(self, membership_type):
-        self._membership_type = membership_type
+    def set_age(self, age):
+        self.__age = age
 
-    def get_personal_details(self):
-        return self._personal_details
+    def get_height(self):
+        return self.__height
 
-    def set_personal_details(self, personal_details):
-        self._personal_details = personal_details
+    def set_height(self, height):
+        self.__height = height
 
-    def get_health_info(self):
-        return self._health_info
+    def get_weight(self):
+        return self.__weight
 
-    def set_health_info(self, health_info):
-        self._health_info = health_info
+    def set_weight(self, weight):
+        self.__weight = weight
 
-    def get_appointments(self):
-        return self._appointments
+    def get_plan(self):
+        return self.__plan
 
-    def get_attendance_records(self):
-        return self._attendance_records
+    def set_plan(self, plan):
+        self.__plan = plan
 
     def add_appointment(self, appointment):
-        self._appointments.append(appointment)
+        self.__appointments.append(appointment)
 
-    def cancel_appointment(self, appointment_id):
-        self._appointments = [apt for apt in self._appointments if apt.get_appointment_id() != appointment_id]
+    def cancel_appointment(self, appointment_type, date):
+        self.__appointments = [appt for appt in self.__appointments if not (appt.get_type() == appointment_type and appt.get_date() == date)]
 
-    def add_attendance_record(self, record):
-        self._attendance_records.append(record)
+    def list_appointments(self):
+        return self.__appointments
+
+    def update_membership_status(self, new_plan):
+        self.__plan = new_plan
