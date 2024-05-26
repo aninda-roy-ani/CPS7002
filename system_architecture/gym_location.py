@@ -1,5 +1,3 @@
-# system_architecture/gym_location.py
-
 class GymLocation:
     def __init__(self, location_id, city, gym_manager):
         self.__location_id = location_id

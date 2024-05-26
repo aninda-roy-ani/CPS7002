@@ -9,7 +9,7 @@ class GymManagementApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Gym Management System")
-        self.root.geometry("1200x600")  # Fix the size of the window to a larger size
+        self.root.geometry("1200x600")
         self.root.configure(bg='black')
 
         self.gym_management = GymManagement()
@@ -18,14 +18,11 @@ class GymManagementApp:
         self.saved_gym = None
         self.saved_zone = None
 
-        # Create a frame for the navigation menu on the left side
         self.menu_frame = tk.Frame(self.root, bg='yellow', width=200)
         self.menu_frame.pack(side=tk.LEFT, fill=tk.Y)
 
-        # Create buttons for navigation
         self.create_nav_buttons()
 
-        # Create frame for the main content
         self.main_frame = tk.Frame(self.root, bg='black')
         self.main_frame.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
 
@@ -816,9 +813,8 @@ class GymManagementApp:
         messagebox.showinfo("Success", "CSV report saved successfully!")
 
     def create_bar_chart_report(self):
-        import pandas as pd
-        import matplotlib.pyplot as plt
         import numpy as np
+        import pandas as pd
 
         try:
             data = pd.read_csv('gym_report.csv')
