@@ -845,8 +845,6 @@ class GymManagementApp:
 
         plt.show()
 
-    create_bar_chart_report()
-
 
 if __name__ == "__main__":
     root = tk.Tk()
