@@ -3,7 +3,7 @@ from tkinter import messagebox, ttk
 import csv
 import matplotlib.pyplot as plt
 from system_architecture.gym_management import GymManagement
-
+#Only the GymManagement class was imported
 
 class GymManagementApp:
     def __init__(self, root):
