@@ -813,34 +813,39 @@ class GymManagementApp:
         messagebox.showinfo("Success", "CSV report saved successfully!")
 
     def create_bar_chart_report(self):
-        import numpy as np
-        import pandas as pd
-
         try:
-            data = pd.read_csv('gym_report.csv')
+            with open('gym_report.csv', mode='r') as file:
+                reader = csv.DictReader(file)
+                data = [row for row in reader]
         except FileNotFoundError:
             messagebox.showerror("Error", "CSV report file not found. Please save the CSV report first.")
             return
 
-        x = np.arange(len(data['GymID']))  # the label locations
+        gym_ids = [row['GymID'] for row in data]
+        number_of_members = [int(row['Number of Members']) for row in data]
+        total_income = [float(row['Total Income']) for row in data]
+
+        x = range(len(gym_ids))  # the label locations
         width = 0.35  # the width of the bars
 
         fig, ax = plt.subplots()
-        bars1 = ax.bar(x - width / 2, data['Number of Members'], width, label='Number of Members')
-        bars2 = ax.bar(x + width / 2, data['Total Income'], width, label='Total Income')
+        bars1 = ax.bar([i - width / 2 for i in x], number_of_members, width, label='Number of Members')
+        bars2 = ax.bar([i + width / 2 for i in x], total_income, width, label='Total Income')
 
         # Add some text for labels, title and custom x-axis tick labels, etc.
         ax.set_xlabel('Gym ID')
         ax.set_ylabel('Values')
         ax.set_title('Gym Report')
         ax.set_xticks(x)
-        ax.set_xticklabels(data['GymID'])
+        ax.set_xticklabels(gym_ids)
         ax.legend()
 
         plt.xticks(rotation=45)
         fig.tight_layout()
 
         plt.show()
+
+    create_bar_chart_report()
 
 
 if __name__ == "__main__":
