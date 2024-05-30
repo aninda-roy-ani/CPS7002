@@ -8,7 +8,7 @@ from system_architecture.gym_management import GymManagement
 class GymManagementApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("Gym Management System")
+        self.root.title("St Mary's Fitness Gym Management System")
         self.root.geometry("1200x600")
         self.root.configure(bg='black')
 
